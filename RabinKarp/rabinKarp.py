@@ -1,46 +1,50 @@
-class RollingHash:
-    	def __init__(self, string, size):
-		self.str  = string
-		self.hash = 0
-		
-		for i in xrange(0, size):
-			self.hash += ord(self.str[i])
-		
-		self.init = 0
-		self.end  = size
-		
-	def update(self):
-		if self.end <= len(self.str) -1:
-			self.hash -= ord(self.str[self.init])
-			self.hash += ord(self.str[self.end])
-			self.init += 1
-			self.end  += 1
-			
-	def digest(self):
-		return self.hash
+prime = 101
+def pattern_matching(text, pattern):
+    m = len(pattern)
+    n = len(text)
+    pattern_hash = create_hash(pattern, m - 1)
+    text_hash = create_hash(text, m - 1)
 
-	def text(self):
-		return self.str[self.init:self.end]
+    for i in range(1, n - m + 2):
+        if pattern_hash == text_hash:
+            if check_equal(text[i-1:i+m-1], pattern[0:]) is True:
+                return i - 1;
+        if i < n - m + 1:    
+            text_hash = recalculate_hash(text, i-1, i+m-1, text_hash, m)
+    return -1;
+    
+def check_equal(str1, str2):
+    if len(str1) != len(str2):
+        return False;
+    i = 0
+    j = 0
+    for i, j in zip(str1, str2):
+        if i != j:
+            return False;
+    return True
+    
+def create_hash(input, end):
+    hash = 0
+    for i in range(end + 1):
+        hash = hash + ord(input[i])*pow(prime, i)
+    return hash
+
+def recalculate_hash(input, old_index, new_index, old_hash, pattern_len):
+    new_hash = old_hash - ord(input[old_index])
+    new_hash = new_hash/prime
+    new_hash += ord(input[new_index])*pow(prime, pattern_len - 1)
+    return new_hash;
 
 
+import time
+start_time = time.clock()
+text='dhsadashbbhdsahbdhbbh'
+pattern = "shbb"
+index = pattern_matching(text, pattern)
+if index > 0:
+    print 'Pattern occurs with shift' 
+    print index
+else:
+         print 'No match found'    
 
-def rabin_karp(substring, string):
-	if substring == None or string == None:
-		return -1
-	if substring == "" or string == "":
-		return -1
-
-	if len(substring) > len(string):
-		return -1
-
-	hs 	 = RollingHash(string, len(substring))
-	hsub = RollingHash(substring, len(substring))
-	hsub.update()
-		
-	for i in range(len(string)-len(substring)+1):						
-		if hs.digest() == hsub.digest():
-			if hs.text() == substring:
-				return i
-		hs.update()
-
-	return -1
+print("--- %s seconds ---" % (time.clock() - start_time)) 

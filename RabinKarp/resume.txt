@@ -12,3 +12,4 @@ o valor do novo caracter * 3 ^2, assim nós obtemos 53 como valor do hash bed.Fi
 que recalcular, porém casso tivessemos um pattern de m igual a 244, somente precisariamos executar três instruções para continuar recalculando os novos hashs.
     A execução do algoritmo segue comparando os hashs gerados com o que ele gerou do pattern,quando achar uma comparação valida ele retorna a posição menos 1, sendo esse o 'shift' 
 do match,caso ele não ache nenhum hash igual ao do pattern, ele assume que não existe match na string.
+    Por questões de segurança se usa um primo muito maior e os valores da tabela asc para os caracteres,porém para simplificação usei no exemplo numeros didadicos.
