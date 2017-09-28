@@ -1,0 +1,14 @@
+    O algoritmo de Rabin Karp se baseia na transformação do texto em pequenos hashs do tamanho do pattern gerados de maneira otimizado reaproveitando os gerados anteriormente. Ele tem
+um pré processamento de notação O de m, O de ((n - m + 1)m) para rodar, porém, na grande maioria dos casos ele tem um desempenho melhor, perto de O de n. 
+    A geração de do hash se baseia no principio de reaproveitamendo em 3 etapas. Vamos supor que temos o texto abeda, iriamos precisar designar numeros unicos para cada caracter e um primo para nossa geração. Tendo escolhido
+numeros de 1 a 26 para o alfabeto e 3 como nosso primo, assumindo que nosso pattern tem m igual a 3, montariamos nosso primeiro hash com abe, com a seguinte fórmula, 
+valor do caracter * o primo escolhido ^ 0 + valor do caracter * o primo escolhido ^ 1 + valor do caracter * o primo escolhido ^ 2 e assim por diante caso nosso pattern tivesse m maior
+que tres. Nosso primeiro resultado seria 1*3^0+2*3^1+5*3^2 que é igual a 52, tendo assim gerado nossa primeira hash,dos caracteres abe, depois, não iremos gerar a proxima hash do zero, serão executados três 
+passos. O primeiro sendo diminuir o valor do caracter do char que não esta mais no hash, depois dividir o hash pelo primo escolhido, por ultimo, somar o valor do caracter do novo
+char * o primo escolhido ^ na m-1. Colocando isso com o que tinhamos antes, primeiro diminuiriamos 1 de 52, ficando com 51, após seria divido por 3, obtendo 17, por ultimo será somado
+o valor do novo caracter * 3 ^2, assim nós obtemos 53 como valor do hash bed.Finalmente iremos repetir o processo uma ultima vez, diminuindo 2 de 53, obtendo 51, dividindo por 3 conseguimos
+17, e somando 1*3^2 conseguimos 26, que é a ultima hash é ser gerada, para eda.
+    Olhando o que foi feito pode parecer que era mais simples recalcular, isso é porque tinhamos um pattern de 3, e assim os passos para gerar novamente ficam do mesmo tamanho do
+que recalcular, porém casso tivessemos um pattern de m igual a 244, somente precisariamos executar três instruções para continuar recalculando os novos hashs.
+    A execução do algoritmo segue comparando os hashs gerados com o que ele gerou do pattern,quando achar uma comparação valida ele retorna a posição menos 1, sendo esse o 'shift' 
+do match,caso ele não ache nenhum hash igual ao do pattern, ele assume que não existe match na string.
