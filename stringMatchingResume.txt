@@ -1,0 +1,17 @@
+
+O problema de busca por sub cadeias se apresenta , entre muitos lugares, nos programas de edição de texto para o famoso auto-complete , baseado tanto no contexto quanto no que já foi digitado.
+
+ É muito comum também em buscas por padrões de reconhecimento de doenças e futuros problemas genéticos em sequencias de DNA.
+
+ Ele se baseia na necessidade de buscar de forma eficiente por um padrão de texto informado pelo usuário em uma cadeia de texto de tamanho maior ou igual.
+
+O algoritmo de busca por sub-cadeias é definido da seguinte maneira. É assumido que  o texto é um vetor de posições 1 ... n que tem o tamanho n,onde o padrão sendo buscado é outro vetor de posições 1 ... m de tamanho m que necessariamente tem m<=n.
+
+É necessário assumir também que ambos vetores  são formados por caracteres de um alfabeto finito, e que os vetores podem ser chamados string de caracteres.
+ se
+Referenciado o exemplo abaixo é possível definir que o padrão P ocorre no 'shift' S no texto T, ou que o padrão começa na posição S +1 do texto T,  se S for menor que o tamanho do texto menos o padrão e maior ou igual que zero e que a substring to texto começando em S + 1 até s + m ( o tamanho do padrão) é igual ao padrão. Isso se o que existe no texto em S + j é igual ao que tem no padrão em j.
+
+Se P acontece em algum 'shift' de T, nós o chamamos de um  'valid shift', caso contrario nós  S chamamos de um invalid shift.
+
+
+**NOTAÇÕES SOBRE O ALFABETO
