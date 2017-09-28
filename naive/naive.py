@@ -1,3 +1,5 @@
+import time
+start_time = time.clock()
 text= "ababaaaa"
 pattern = "aaa"
 found=False
@@ -12,3 +14,4 @@ for s in range ((len(text)-len(pattern))+1):
     
 if not found:
     print 'No match found'    
+print("--- %s seconds ---" % (time.clock() - start_time))        
