@@ -1,3 +1,8 @@
 
-O algoritmo naiva é um algoritmo de força bruta, onde ele percorre todas iterações do tamanho do pattern possiveis para um 'shift', 
+    O algoritmo naiva é um algoritmo de força bruta, onde ele percorre todas iterações do tamanho do pattern possiveis para um 'shift', 
 com as pequenas otimizações de percorrer de 0 até o tamanho do texto - o tamanho do pattern mais um e parar de comparar o shit após o primeiro elemento ser diferente.
+A notação deste algoritmo é O((n - m + 1)m) em seu pior caso. Sendo seu pior um texto com elementos iguais tendo e^n e um padrão de e^m, o loop de comparação j teria que percorrer os
+caracteres correspondentes m vezes para validar o 'shift'. O motivo que torna o algoritmo naive ineficiente é que ele ignora a informação ganha por um 'shift' quando considera outros 'shifts'. Um exemplo onde isto seria valioso é o cenario 
+em que o pattern P é igual a cccca e o 'shift' 0 é valido, então nenhum dos 'shifts' 1 a 4 serão válidos, já que text na posição 4 é a.
+    Existem inumeras maneiras de otimizar o algoritmo aproveitando as informações que os 'shifts' anteriores podem nos prover, e que os algoritmos a serem analisados em seguida tomam
+proveito.
