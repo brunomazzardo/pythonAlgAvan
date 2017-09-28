@@ -21,13 +21,13 @@ for i in range(len(text)):
     if text[i] == pattern[j]:
         j += 1  
         if j == len(pattern):
-                    print 'Pattern occurs with shift' 
-                    print i - (j - 1)
+                    print ('Pattern occurs with shift' )
+                    print (i - (j - 1))
                     found=True
                     break;
         
 if not found:
-    print 'No match found'    
+    print ('No match found'   ) 
 
 
 print("--- %s seconds ---" % (time.clock() - start_time))    

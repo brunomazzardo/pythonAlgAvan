@@ -42,9 +42,9 @@ text='dhsadashbbhdsahbdhbbh'
 pattern = "shbb"
 index = pattern_matching(text, pattern)
 if index > 0:
-    print 'Pattern occurs with shift' 
-    print index
+    print ('Pattern occurs with shift' )
+    print (index)
 else:
-         print 'No match found'    
+         print ('No match found')    
 
 print("--- %s seconds ---" % (time.clock() - start_time)) 

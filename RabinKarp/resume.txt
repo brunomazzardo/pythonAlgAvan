@@ -1,3 +1,4 @@
+
     O algoritmo de Rabin Karp se baseia na transformação do texto em pequenos hashs do tamanho do pattern gerados de maneira otimizado reaproveitando os gerados anteriormente. Ele tem
 um pré processamento de notação O de m, O de ((n - m + 1)m) para rodar, porém, na grande maioria dos casos ele tem um desempenho melhor, perto de O de n. 
     A geração de do hash se baseia no principio de reaproveitamendo em 3 etapas. Vamos supor que temos o texto abeda, iriamos precisar designar numeros unicos para cada caracter e um primo para nossa geração. Tendo escolhido
@@ -10,6 +11,7 @@ o valor do novo caracter * 3 ^2, assim nós obtemos 53 como valor do hash bed.Fi
 17, e somando 1*3^2 conseguimos 26, que é a ultima hash é ser gerada, para eda.
     Olhando o que foi feito pode parecer que era mais simples recalcular, isso é porque tinhamos um pattern de 3, e assim os passos para gerar novamente ficam do mesmo tamanho do
 que recalcular, porém casso tivessemos um pattern de m igual a 244, somente precisariamos executar três instruções para continuar recalculando os novos hashs.
-    A execução do algoritmo segue comparando os hashs gerados com o que ele gerou do pattern,quando achar uma comparação valida ele retorna a posição menos 1, sendo esse o 'shift' 
+    A execução do algoritmo segue comparando os hashs gerados com o que ele gerou do pattern,quando achar uma comparação valida, ele compara os elementos que geraram o hash com o pattern,
+ pois é impossivel garantir que dois patterns diferentes não gerem o o mesmo hash, e se forem iguais, ele retorna a posição menos 1, sendo esse o 'shift' 
 do match,caso ele não ache nenhum hash igual ao do pattern, ele assume que não existe match na string.
     Por questões de segurança se usa um primo muito maior e os valores da tabela asc para os caracteres,porém para simplificação usei no exemplo numeros didadicos.
