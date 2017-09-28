@@ -1,0 +1,10 @@
+    O algoritmo de Knuth Morris é um agora uma solução linear para o problema de busca em sub-cadeias.O algoritmo é divido em duas partes, o pré processamento do pattern para achar uma conexão
+entre sufixos e prefixos, assim não sendo necessario recomeçar a comparação do pattern do inicio após cada mismatch. Este pré processamento tem notação O de m, sendo m o tamanho do pattern
+e ocupando um espaço na meméria também de m, pois guarda a posição em que a próxima comparação deve ocorrer em relação a cada posição do pattern. Depois o algoritmo roda uma operação O de n,
+percorrendo todo texto somente uma vez,utilizando do vetor auxiliar para saber qual elemento do pattern comparar.
+    Considerando que nosso pattern é abcaby, após executar o pré processamento ficariamos com uma relação [0,0,0,1,2,0], as três primeiras posições são 0, já que não podemos garantir que 
+já passamos por nenhum elemento assim no texto, já o quarto elemento do vetor é 1, pois se tivessemos o texto abcayy, o match teria parado no y, então voltariamos uma posição para a 
+nova comparação, mas não precisamos comparar novamente com o primeiro a, devido ao fato de termos chego na comparação até o y que era precedido por um a, então sabemos que podemos recomeçar 
+a comparação do pattern com o texto na sua posição 1, que é o b. Outro otimização que este vetor pré processado nos traria, é que o texto fosse abcabcaby, a comparação com o pattern
+iria parar no na quinta posição do texto, o c e devido ao fato de sabermos que o que veio antes do c é ab, nós podemos recomeçar na 2 posição do pattern, que é o c, não precisando recomeçar
+a comparação.
