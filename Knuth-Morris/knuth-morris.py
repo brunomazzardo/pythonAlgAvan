@@ -14,7 +14,7 @@ for c in pattern[1 : ]:
     pi.append(j)
 
 
-j = 0 
+j = 0
 for i in range(len(text)):
     while j > 0 and text[i] != pattern[j]:
         j = pi[j - 1]  
